@@ -16,9 +16,6 @@ export default (sequelize, DataType) => {
     phone: {
       type: DataType.STRING,
     },
-    employee: {
-      type: DataType.STRING,
-    },
     table: {
       type: DataType.DATE
     },
