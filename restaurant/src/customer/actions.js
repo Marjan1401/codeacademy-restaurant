@@ -24,13 +24,13 @@ const create = async(req, res, next) => {
     firstName,
     lastName,
     phone,
-    employee,
+    employees,
     table,
   }: {
     firstName: string,
     lastName: string,
     phone: string,
-    employee: string,
+    employees: string,
     table: string,
   } = req.body;
 
@@ -41,7 +41,7 @@ const create = async(req, res, next) => {
     firstName,
     lastName,
     phone,
-    employee,
+    employees,
     table
   });
   res.status(201).send({ info: 'Customer has been created!'});
@@ -56,7 +56,7 @@ const update = async(req, res, next) => {
     firstName: ?string,
     lastName: ?string,
     phone: ?string,
-    employee: ?string,
+    employees: ?string,
     table: ?string
   } = Object.assign({}, req.body);
 

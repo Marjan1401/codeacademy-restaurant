@@ -16,18 +16,21 @@ export default (sequelize, DataType) => {
     phone: {
       type: DataType.STRING,
     },
-    table: {
-      type: DataType.DATE
-    },
-    createdAt: {
-      type: DataType.DATE
-    },
-    updatedAt: {
-      type: DataType.DATE
-    },
-    deletedAt: {
-      type: DataType.DATE
-    }
+     employees: {
+       type: DataType.STRING,
+     },
+    // table: {
+    //   type: DataType.STRING
+    // },
+    // createdAt: {
+    //   type: DataType.DATE
+    // },
+    // updatedAt: {
+    //   type: DataType.DATE
+    // },
+    // deletedAt: {
+    //   type: DataType.DATE
+    // }
   });
   return Customer;
 };

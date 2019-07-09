@@ -7,30 +7,31 @@ export default (sequelize, DataType) => {
     },
     firstName: {
       type: DataType.STRING,
-      allowNull: false,
+      allowNull: false
     },
     lastName: {
       type: DataType.STRING,
-      allowNull: false,
+      allowNull: false
     },
     salary: {
-      type: DataType.STRING,
+      type: DataType.INTEGER,
+      allowNull: false
     },
     dateOfEmployment: {
       type: DataType.DATE
     },
     positionTitle : {
-      type: DataType.DATE
+      type: DataType.STRING
     },
-    createdAt: {
-      type: DataType.DATE
-    },
-    updatedAt: {
-      type: DataType.DATE
-    },
-    deletedAt: {
-      type: DataType.DATE
-    }
+    // createdAt: {
+    //   type: DataType.STRING
+    // },
+    // updatedAt: {
+    //   type: DataType.STRING
+    // },
+    // deletedAt: {
+    //   type: DataType.STRING
+    // }
   });
   return Employees;
 };

@@ -3,15 +3,15 @@ import Sequelize from 'sequelize';
 import models from '../models/index';
 
 
-const Employees = models.Employees;
+const Menu = models.Menu;
 
 const list = async(req, res, next) => {
-  const result: Array = await Employees.findAll({
+  const result: Array = await Menu.findAll({
     include: [
       {
         model : models.Customer
       }
-    ] 
+    ]
   });
   res.status(200).send(result);
   await next;
@@ -20,7 +20,7 @@ const list = async(req, res, next) => {
 const get = async(req, res, next) => {
   const { id }: { id: string } = req.params;
 
-  const result: Object = await Employees.find({
+  const result: Object = await Menu.find({
      where: { id },
      include: [
       {
@@ -35,30 +35,24 @@ const get = async(req, res, next) => {
 
 const create = async(req, res, next) => {
   const {
-    firstName,
-    lastName,
-    salary,
-    dateOfEmployment,
-    positionTitle,
+    mainDish,
+    dessert,
+    drinks
   }: {
-    firstName: string,
-    lastName: string,
-    salary: string,
-    dateOfEmployment: string,
-    positionTitle: string,
+    mainDish: string,
+    dessert: string,
+    drink: string
   } = req.body;
 
-  const employeeId = hat();
+  const menuId = hat();
 
-  await Employees.create({
-    id: employeeId,
-    firstName,
-    lastName,
-    salary,
-    dateOfEmployment,
-    positionTitle
+  await Menu.create({
+    id:menuId,
+    mainDish,
+    dessert,
+    drinks
   });
-  res.status(201).send({ info: 'Employee has been created!'});
+  res.status(201).send({ info: 'Menu has been created!'});
 
   await next;
 };
@@ -67,14 +61,12 @@ const update = async(req, res, next) => {
   const { id }: { id: string } = req.params;
   
   const updateData: {
-    firstName: ?string,
-    lastName: ?string,
-    salary: ?string,
-    dateOfEmployment: ?string,
-    positionTitle: ?string
+    mainDish: ?string,
+    dessert: ?string,
+    drink: ?string
   } = Object.assign({}, req.body);
 
-  await Employees.update(updateData, { where: { id }})
+  await Menu.update(updateData, { where: { id }})
   res.status(204);
 
   await next;
@@ -83,8 +75,8 @@ const update = async(req, res, next) => {
 async function del(req, res, next) {
   const { id }: { id: string } = req.params;
 
-  await Employees.destroy({ where: { id }});
-  res.status(202).send({ info: `Employee ${id} has been removed!`});
+  await Menu.destroy({ where: { id }});
+  res.status(202).send({ info: `Menu ${id} has been removed!`});
 
   await next;
 }
